@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+<style>
+body { text-align: center; }
+</style>
+</head>
+<body>
+    <div class="streamer">
+        <h3> 스트리밍 </h3>
+        <img src="http://192.168.137.205:8090/?action=stream" width="800" height="550">
+    </div>
+    <div class="temperature">
+        <p> 현재 온도: {% print("%4.1d" % temperature) %}°C </p>
+        <p> 현재 습도: {% print("%4.1d" % humidity) %}% </p>
+        <p>
+        {% if(temperature >= 24): %}
+            {% print("땀 흘림에 주의하세요.") %}
+            {% if (humidity > 50): %}
+                {% print("매우 습한 날이에요. 화장이 잘 무너질 수 있어요.") %}
+            {% elif (humidity > 30): %}
+                {% print("적정 습도예요.") %}
+            {% else: %}
+                {% print("매우 건조한 날이에요. 화장이 잘 들뜰 수 있어요.") %}
+            {% endif %}
+        {% elif(temperature >= 21): %}
+            {% if (humidity > 60): %}
+                {% print("매우 습한 날이에요. 화장이 잘 무너질 수 있어요.") %}
+            {% elif (humidity > 40): %}
+                {% print("적정 습도예요.") %}
+            {% else: %}
+                {% print("매우 건조한 날이에요. 화장이 잘 들뜰 수 있어요.") %}
+            {% endif %}
+        {% elif(temperature >= 18): %}
+            {% if (humidity > 70): %}
+                {% print("매우 습한 날이에요. 화장이 잘 무너질 수 있어요.") %}
+            {% elif (humidity > 50): %}
+                {% print("적정 습도예요.") %}
+            {% else: %}
+                {% print("매우 건조한 날이에요. 화장이 잘 들뜰 수 있어요.") %}
+            {% endif %}
+        {% else: %}
+            {% if (humidity > 80): %}
+                {% print("매우 습한 날이에요. 화장이 잘 무너질 수 있어요.") %}
+            {% elif (humidity > 60): %}
+                {% print("적정 습도예요.") %}
+            {% else: %}
+                {% print("매우 건조한 날이에요. 화장이 잘 들뜰 수 있어요.") %}
+            {% endif %}
+        {% endif %}
+        </p>
+    </div>
+</body>
+</html>
